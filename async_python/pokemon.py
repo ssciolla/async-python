@@ -9,7 +9,7 @@ from utils import time_execution_sync, time_execution_async
 BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
 
-# Synchronouus
+# Synchronous
 
 def get_pokemon_data(id: int):
     resp = httpx.get(BASE_URL + str(id))
@@ -29,7 +29,7 @@ poke_data = get_pokemon_sync()
 print(len(poke_data))
 
 
-# Aynchronous
+# Asynchronous
 
 async def get_pokemon_data_async(client: httpx.AsyncClient, id: int) -> dict[str, Any]:
     resp = await client.get(BASE_URL + str(id))
@@ -51,7 +51,7 @@ poke_data = asyncio.run(get_pokemon_async())
 print(len(poke_data))
 
 
-# Aynchronous with limit using Sempahore
+# Asynchronous with limit using Sempahore
 
 SEM = asyncio.Semaphore(10)
 
